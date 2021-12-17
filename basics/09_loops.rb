@@ -40,3 +40,13 @@ end
 5.times do |i|
     puts "#{cities[i]}_times"
 end
+
+# implementing exponents method from loop:
+def pow(m, n)
+    result = 1
+    n.times do |i|
+        result = result * m
+    end
+    puts(result)
+end
+pow(5,3)
