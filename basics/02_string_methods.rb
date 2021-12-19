@@ -59,3 +59,50 @@ str5 = "Ruby"
 str6 = "<>"
 puts str5.ljust(10, str6) #Ruby<><><> (not mutating the string)
 puts str5 #Ruby
+
+# exercises
+str7 = "Ruby is The best language in the World"
+def find_frequency(sentence, word)
+    # Your code here
+    sentence = sentence.split " "
+    count = 0
+    for word_itr in sentence
+      if word_itr.downcase == word
+        count += 1
+      end
+    end
+    return count
+  end
+
+puts find_frequency(str7, "the") #2
+
+# exercises
+def sort_string(string)
+    # your code here
+    array = string.split " "
+    array.sort! { |x, y| x.length <=> y.length }
+    string = array.join " "
+    return string
+end
+str = "Sort words in a sentence"
+puts sort_string str
+
+# exercise
+def palindrome(sentence)
+    # Write your code here
+    sentence.delete! " "
+    sentence = sentence.downcase
+    sentence = sentence.split ""
+    index = 0
+    for char in sentence
+        if index == sentence.length/2
+            return true
+        end
+        if char != sentence[sentence.length-1-index]
+            return false
+        end
+        index += 1
+    end
+end
+sen = "Never odd or even"
+puts palindrome(sen)
