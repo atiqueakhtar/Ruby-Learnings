@@ -18,3 +18,8 @@ print(friends.reverse())
 # ["Sohail", "Dwight", "Tauseef", "Adarsh"]
 print(friends.sort())
 # ["Adarsh", "Dwight", "Sohail", "Tauseef"]
+
+# alternate way of creating array
+a = %w(a b c d e f)
+print a
+# ["a", "b", "c", "d", "e", "f"]
