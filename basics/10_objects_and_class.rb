@@ -100,3 +100,28 @@ def execute_quiz(qn_set)
 end
 
 execute_quiz(question_ans)
+
+# inheritance in OOP in ruby:
+class Chef
+    def make_special_dish
+        puts "Speacial dish made"
+    end
+    def make_pasta
+        puts "Pasta made"
+    end
+    def make_noodles
+        puts "Noodles made"
+    end
+end
+
+class ItalianChef < Chef
+    def make_special_dish
+        puts "Speacial Italian dish made"
+    end
+    def make_pasta
+        puts "Italian Pasta made"
+    end
+end
+
+ichef = ItalianChef.new
+ichef.make_pasta
