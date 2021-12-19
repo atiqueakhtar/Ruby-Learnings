@@ -67,3 +67,36 @@ student1 = Student.new("Jim", "Business", 2.6)
 student2 = Student.new("Pam", "Art", 3.6)
 puts student1.has_honors
 puts student2.has_honors
+
+# quiz game:
+class Question
+    attr_accessor :question, :answer
+    def initialize(qn, ans)
+        @question = qn
+        @answer = ans
+    end
+end
+
+q1 = "What is Germany's Capital?\n(a)Moscow\n(b)Berlin"
+q2 = "What is New Zealand's Capital?\n(a)Christchurch\n(b)Wellington"
+q3 = "What is Malaysia's Capital?\n(a)Kuala Lumpur\n(b)Malacca"
+
+question_ans = [
+    Question.new(q1, "b"),
+    Question.new(q2, "b"),
+    Question.new(q3, "a"),
+]
+
+def execute_quiz(qn_set)
+    score = 0
+    for question in qn_set
+        puts question.question
+        answer = gets.chomp()
+        if answer == question.answer
+            score += 1
+        end
+    end
+    puts "Your score: #{score} / #{qn_set.length}"
+end
+
+execute_quiz(question_ans)
