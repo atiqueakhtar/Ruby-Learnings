@@ -46,7 +46,7 @@ puts car2.color
 
 # object methods/instance methods:
 class Student
-     attr_accessor :name, :stream, :gpa
+     attr_accessor :name, :stream, :gpa     #attr_accessor takes symbol as arguments
 
      def initialize(name, stream, cgpa)
         @name = name
@@ -99,7 +99,7 @@ def execute_quiz(qn_set)
     puts "Your score: #{score} / #{qn_set.length}"
 end
 
-execute_quiz(question_ans)
+# execute_quiz(question_ans)
 
 # inheritance in OOP in ruby:
 class Chef
@@ -125,3 +125,72 @@ end
 
 ichef = ItalianChef.new
 ichef.make_pasta
+
+# instance methods v/s class methods
+# Till now we saw only instance methods and not class methods
+# class methods are where we put functionality that does not pertain to individual objects. Objects contain state, and if we have a method that does not need to deal with states, then we can just use a class method.
+# When defining a class method, we prepend the method name with the reserved word "self."
+
+# similarly instance variables v/s class variables
+# Just as instance variables capture information related to specific instances of classes (i.e., objects), we can create variables for an entire class that are appropriately named class variables.
+# Class variables are created using two @ symbols like so: "@@"
+
+# Example showing both instance and class methods and variables used in a code:
+class GoodDog
+    @@no_of_dog = 0 #class method
+
+    def initialize  #instance method(constructor)
+        @@no_of_dog += 1
+    end
+
+    def self.total_dogs #class method
+        return @@no_of_dog
+    end
+end
+
+dog1 = GoodDog.new
+dog2 = GoodDog.new
+puts "Total Dogs: #{GoodDog.total_dogs}"
+
+# self, inside of an instance method, references the instance (object) that called the method - the calling object. Therefore, self.weight= is the same as sparky.weight=, in our example.
+
+# self, outside of an instance method, references the class and can be used to define class methods. Therefore if we were to define a name class method, def self.name=(n) is the same as def GoodDog.name=(n).
+
+# Exercises
+# If we have a Car class and a Truck class and we want to be able to go_fast, how can we add the ability for them to go_fast using the module Speed? How can you check if your Car or Truck can now go fast?
+module Speed
+    def go_fast
+        puts "I am a #{self.class} and going super fast!"
+    end
+end
+  
+class Car
+    include Speed
+    def go_slow
+        puts "I am safe and driving slow."
+    end
+end
+
+class Truck
+    include Speed
+    def go_very_slow
+        puts "I am a heavy truck and like going very slow."
+    end
+end
+
+# small_car = Car.new
+# small_car.go_fast
+
+# Exercise
+class Cube
+    attr_reader :volume # add a getter method to enable access
+  
+    def initialize(volume)
+      @volume = volume
+    end
+end
+  
+my_cube = Cube.new(1000)
+p my_cube.instance_variables
+p my_cube.instance_variable_get("@volume")
+p my_cube.volume
